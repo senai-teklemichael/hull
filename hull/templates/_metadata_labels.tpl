@@ -1,6 +1,6 @@
 {{- /*
-| Purpose:  
-|   
+| Purpose:
+|
 |   Write combined labels: block from custom and default annotations
 |
 | Interface:
@@ -46,8 +46,8 @@ labels: {}
 
 
 {{- /*
-| Purpose:  
-|   
+| Purpose:
+|
 |   Write combined labels: block from custom and default annotations
 |
 | Interface:
@@ -58,7 +58,7 @@ labels: {}
 {{- define "hull.metadata.general.labels.object" -}}
 {{- $parent := (index . "PARENT_CONTEXT") -}}
 {{- $hullRootKey := default "hull" (index . "HULL_ROOT_KEY") -}}
-vidispine.hull/version: {{ default "" (index $parent.Values $hullRootKey).version }}
+hull/version: {{ default "" (index $parent.Values $hullRootKey).version }}
 helm.sh/chart: {{ template "hull.metadata.chartref" (dict "PARENT_CONTEXT" $parent) }}
 app.kubernetes.io/managed-by: {{ $parent.Release.Service | quote}}
 app.kubernetes.io/version: {{ default ($parent.Chart.AppVersion | quote) ((index (index $parent.Values $hullRootKey).config.general.metadata.labels.common "app.kubernetes.io/version") | quote ) }}
@@ -68,8 +68,8 @@ app.kubernetes.io/part-of: {{ default "undefined" (index (index $parent.Values $
 
 
 {{- /*
-| Purpose:  
-|   
+| Purpose:
+|
 |   Write selector labels.
 |   If SPEC contains a selector field it overwrites the default behavior
 |
@@ -97,8 +97,8 @@ app.kubernetes.io/component: {{ default "undefined" $component }}
 
 
 {{- /*
-| Purpose:  
-|   
+| Purpose:
+|
 |   Write custom labels.
 |
 | Interface:
